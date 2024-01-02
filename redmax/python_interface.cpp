@@ -12,7 +12,7 @@ PYBIND11_MODULE(redmax_py, m) {
     py::class_<Mesh>(m, "Mesh");
 
     py::class_<SDFMesh, Mesh>(m, "SDFMesh")
-        .def(py::init<Matrix3X, Matrix3Xi, dtype, std::string, std::string>(), 
+        .def(py::init<Eigen::Matrix<double, 3, Eigen::Dynamic>, Eigen::Matrix<int, 3, Eigen::Dynamic>, dtype, std::string, std::string>(), 
                 py::arg("V"), py::arg("F"), py::arg("dx"), py::arg("load_path") = "", py::arg("save_path") = "")
         .def_readwrite("vertices", &SDFMesh::_V)
         .def_readwrite("faces", &SDFMesh::_F)
@@ -25,7 +25,7 @@ PYBIND11_MODULE(redmax_py, m) {
         
 
     py::class_<BVHMesh, Mesh>(m, "BVHMesh")
-        .def(py::init<Matrix3X, Matrix3Xi>(), 
+        .def(py::init<Eigen::Matrix<double, 3, Eigen::Dynamic>, Eigen::Matrix<int, 3, Eigen::Dynamic>>(), 
                 py::arg("V"), py::arg("F"))
         .def_readwrite("vertices", &SDFMesh::_V)
         .def_readwrite("faces", &SDFMesh::_F)
