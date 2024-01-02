@@ -1,0 +1,6 @@
+[submodule "externals/pybind11"]
+	path = externals/pybind11
+	url = https://github.com/pybind/pybind11
+[submodule "externals/libigl"]
+	path = externals/libigl
+	url = https://github.com/libigl/libigl
