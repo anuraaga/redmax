@@ -1,33 +1,28 @@
-[tool.poetry]
-name = "redmax"
-version = "0.1.0"
-description = "Redmax module"
-authors = ["Jarvis Authors"]
-#packages = [{include = "experimental"}]
-
-
-[tool.pytest.ini_options]
-addopts = [
-    "--import-mode=importlib",
-]
-pythonpath = ["."]
-testpaths = ["tests"]
-
-[tool.pyright]
-stubPath = "../../python/stubs"
-
-
-[tool.poetry.dependencies]
-python = "~3.11"
-conda-lock = "^2.5.1"
-
-
-[tool.poetry.group.dev.dependencies]
-jarvis-tools = {path = "../../python/tools", develop = true}
-conda-lock = "^2.5.1"
-pandas-stubs = "^2.1.4.231218"
-
-
 [build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
+requires = [
+    "setuptools>=42",
+    "wheel",
+    "ninja",
+    "cmake>=3.12",
+]
+build-backend = "setuptools.build_meta"
+
+[tool.mypy]
+files = "setup.py"
+python_version = "3.11"
+strict = true
+show_error_codes = true
+enable_error_code = ["ignore-without-code", "redundant-expr", "truthy-bool"]
+warn_unreachable = true
+
+[[tool.mypy.overrides]]
+module = ["ninja"]
+ignore_missing_imports = true
+
+
+[tool.cibuildwheel]
+test-command = "pytest {project}/tests"
+test-extras = ["test"]
+test-skip = ["*universal2:arm64"]
+# Setuptools bug causes collision between pypy and cpython artifacts
+before-build = "rm -rf {project}/build"
