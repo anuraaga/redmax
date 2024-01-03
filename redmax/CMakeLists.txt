@@ -5,9 +5,6 @@ file(GLOB_RECURSE SOURCE ${SOURCE_DIR}/*.cpp)
 list(REMOVE_ITEM SOURCE ${SOURCE_DIR}/python_interface.cpp)
 
 # CMAKE_INSTALL_PREFIX=$(python3 -c “import sys; print(sys.prefix)”)
-
-add_library(redmax ${HEADER} ${SOURCE})
-
 pybind11_add_module(redmax python_interface.cpp ${HEADER} ${SOURCE})
 
 find_package(Eigen3 REQUIRED)
@@ -15,14 +12,6 @@ find_package(Eigen3 REQUIRED)
 # Includes.
 target_include_directories(redmax PRIVATE ${EXTERNAL_HEADER})
 target_include_directories(redmax PRIVATE ${SOURCE_DIR}/)
-target_link_libraries(redmax PRIVATE sdfgen)
-target_link_libraries(redmax PRIVATE Eigen3::Eigen)
-
-
-target_include_directories(redmax PRIVATE ${EXTERNAL_HEADER})
-target_include_directories(redmax PRIVATE ${SOURCE_DIR}/)
-# 
-# # Add libs.
 target_link_libraries(redmax PRIVATE sdfgen)
 target_link_libraries(redmax PRIVATE Eigen3::Eigen)
 # 
