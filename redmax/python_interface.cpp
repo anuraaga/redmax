@@ -7,7 +7,7 @@ using namespace redmax;
 
 namespace py = pybind11;
 
-PYBIND11_MODULE(redmax_py, m) {
+PYBIND11_MODULE(redmax, m) {
     // mesh
     py::class_<Mesh>(m, "Mesh");
 

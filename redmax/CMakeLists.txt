@@ -8,7 +8,7 @@ list(REMOVE_ITEM SOURCE ${SOURCE_DIR}/python_interface.cpp)
 
 add_library(redmax ${HEADER} ${SOURCE})
 
-pybind11_add_module(redmax_py python_interface.cpp ${HEADER} ${SOURCE})
+pybind11_add_module(redmax python_interface.cpp ${HEADER} ${SOURCE})
 
 find_package(Eigen3 REQUIRED)
 
@@ -19,12 +19,12 @@ target_link_libraries(redmax PRIVATE sdfgen)
 target_link_libraries(redmax PRIVATE Eigen3::Eigen)
 
 
-target_include_directories(redmax_py PRIVATE ${EXTERNAL_HEADER})
-target_include_directories(redmax_py PRIVATE ${SOURCE_DIR}/)
+target_include_directories(redmax PRIVATE ${EXTERNAL_HEADER})
+target_include_directories(redmax PRIVATE ${SOURCE_DIR}/)
 # 
 # # Add libs.
-target_link_libraries(redmax_py PRIVATE sdfgen)
-target_link_libraries(redmax_py PRIVATE Eigen3::Eigen)
+target_link_libraries(redmax PRIVATE sdfgen)
+target_link_libraries(redmax PRIVATE Eigen3::Eigen)
 # 
 # # Add libs.
 

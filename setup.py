@@ -58,10 +58,10 @@ class CMakeBuild(build_ext):
         subprocess.check_call(['cmake', '--build', '.'] + build_args, cwd=self.build_temp)
 
 setup(
-    name='redmax_py',
-    version='0.0.1',
+    name='redmax',
+    version='0.1.0',
     long_description='',
-    ext_modules=[CMakeExtension('redmax_py')],
+    ext_modules=[CMakeExtension('redmax')],
     cmdclass=dict(build_ext=CMakeBuild),
     zip_safe=False,
 )
