@@ -1,0 +1,33 @@
+[tool.poetry]
+name = "redmax"
+version = "0.1.0"
+description = "Redmax module"
+authors = ["Jarvis Authors"]
+#packages = [{include = "experimental"}]
+
+
+[tool.pytest.ini_options]
+addopts = [
+    "--import-mode=importlib",
+]
+pythonpath = ["."]
+testpaths = ["tests"]
+
+[tool.pyright]
+stubPath = "../../python/stubs"
+
+
+[tool.poetry.dependencies]
+python = "~3.11"
+conda-lock = "^2.5.1"
+
+
+[tool.poetry.group.dev.dependencies]
+jarvis-tools = {path = "../../python/tools", develop = true}
+conda-lock = "^2.5.1"
+pandas-stubs = "^2.1.4.231218"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
