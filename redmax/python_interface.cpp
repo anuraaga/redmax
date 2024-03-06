@@ -21,7 +21,8 @@ PYBIND11_MODULE(redmax, m) {
                 py::arg("X"))
         .def("min_distance", &SDFMesh::min_distance,
                 py::arg("X"))
-        .def("normal", &SDFMesh::normal, py::arg("x"));
+        .def("normal", &SDFMesh::normal, py::arg("x"))
+        .def("max_thickness", &SDFMesh::max_thickness);
         
 
     py::class_<BVHMesh, Mesh>(m, "BVHMesh")

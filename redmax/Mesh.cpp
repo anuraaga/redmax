@@ -225,6 +225,15 @@ Vector3 SDFMesh::normal(Vector3 x) {
     return e;
 }
 
+dtype SDFMesh::max_thickness() {
+    dtype max_thickness = 0;
+    for (unsigned int i = 0; i < _SDF.a.size(); ++i) {
+        max_thickness = std::min(max_thickness, _SDF.a[i]);
+    }
+
+    return -max_thickness;
+}
+
 BVHMesh::BVHMesh(Matrix3X V, Matrix3Xi F): Mesh(V, F) {
     _BVH = BVHEngine::create(3);
     _BVH->set_mesh(_V.transpose(), _F.transpose());

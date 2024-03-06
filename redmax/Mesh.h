@@ -39,7 +39,7 @@ public:
     void clear_saved_SDF();
 
     Vector3 normal(Vector3 x);
-
+    dtype max_thickness();
 
 private:
     void precompute_SDF(dtype dx);
