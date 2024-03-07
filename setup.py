@@ -59,7 +59,7 @@ class CMakeBuild(build_ext):
 
 setup(
     name='redmax',
-    version='0.1.0',
+    version='0.2.0',
     long_description='',
     ext_modules=[CMakeExtension('redmax')],
     cmdclass=dict(build_ext=CMakeBuild),
