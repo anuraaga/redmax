@@ -1,0 +1,85 @@
+name: Release Conda Packages
+
+on:
+  push:
+    tags:
+      - '*'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: macos-13
+            config: osx_64_.yaml
+          - os: macos-14
+            config: osx_arm64_.yaml
+          - os: ubuntu-22.04
+            config: linux_64_.yaml
+          - os: windows-2022
+            config: win_64_.yaml
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - uses: mamba-org/setup-micromamba@v1
+        with:
+          generate-run-shell: true
+          environment-file: conda-recipe/conda-lock.yml
+          environment-name: redmax-build
+          cache-environment: true
+
+      - name: conda-build
+        run: |
+          mkdir -p build
+          micromamba run -n redmax-build conda build -m conda-recipe/${{ matrix.config }} -m conda-recipe/python.yaml --output-folder build/ conda-recipe
+        shell: bash
+        env:
+          RELEASE_VERSION: ${{ github.ref_name }}
+
+      - name: upload-packages
+        uses: actions/upload-artifact@v4
+        with:
+          name: packages-${{ matrix.os }}
+          path: build/
+
+  pages:
+    needs: [build]
+    runs-on: ubuntu-22.04
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: mamba-org/setup-micromamba@v1
+        with:
+          generate-run-shell: true
+          environment-file: conda-recipe/conda-lock.yml
+          environment-name: redmax-build
+          cache-environment: true
+
+      - uses: actions/checkout@v4
+        with:
+          ref: gh-pages
+
+      - uses: actions/download-artifact@v4
+        with:
+          path: conda/
+          merge-multiple: true
+
+      - name: prepare package
+        run: micromamba run -n redmax-build conda index conda/
+
+      - name: update pages
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add .
+          git commit -m "Update to latest upstream"
+          git push -u origin -f gh-pages
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

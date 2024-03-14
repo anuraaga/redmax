@@ -1,0 +1,46 @@
+name: Build Conda Packages
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: redmax-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: macos-13
+            config: osx_64_.yaml
+          - os: macos-14
+            config: osx_arm64_.yaml
+          - os: ubuntu-22.04
+            config: linux_64_.yaml
+          - os: windows-2022
+            config: win_64_.yaml
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - uses: mamba-org/setup-micromamba@v1
+        with:
+          generate-run-shell: true
+          environment-file: conda-recipe/conda-lock.yml
+          environment-name: redmax-build
+          cache-environment: true
+
+      - name: conda-build
+        run: |
+          mkdir -p build
+          micromamba run -n redmax-build conda build -m conda-recipe/${{ matrix.config }} ${{ github.event_name != 'pull_request' && '-m conda-recipe/python.yaml' || '' }} --output-folder build/ conda-recipe
+        shell: bash

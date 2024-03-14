@@ -7,6 +7,8 @@ project(RedMax)
 
 # Enable C++ 11
 set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
 
 # find_package(Boost REQUIRED)
 
@@ -17,6 +19,10 @@ add_definitions(
 if(UNIX)
   set(GCC_COVERAGE_COMPILE_FLAGS "-Wno-format")
   add_definitions(${GCC_COVERAGE_COMPILE_FLAGS})
+endif()
+
+IF (WIN32)
+  add_definitions(-DNOMINMAX)
 endif()
 
 set(EXTERNAL_ROOT ${PROJECT_SOURCE_DIR}/externals)
