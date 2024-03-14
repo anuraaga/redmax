@@ -1625,6 +1625,96 @@ package:
     sha256: 654a2488f77bf43555787d952dbffdc5d97956ff4aa9e0414a7131bb741dcf4c
   category: main
   optional: false
+- name: conda-verify
+  version: 3.1.1
+  manager: conda
+  platform: linux-64
+  dependencies:
+    click: ''
+    future: ''
+    jinja2: ''
+    python: '>=3.11,<3.12.0a0'
+    python_abi: 3.11.*
+    pyyaml: ''
+    six: ''
+  url: https://conda.anaconda.org/conda-forge/linux-64/conda-verify-3.1.1-py311h38be061_1006.tar.bz2
+  hash:
+    md5: 93c7f8b22b64d50069ad563e5298c11c
+    sha256: 2b2fb31b4a943987b90fae8dc3e93f180a258a5f5f09dc8aa494941708c2c4f0
+  category: main
+  optional: false
+- name: conda-verify
+  version: 3.1.1
+  manager: conda
+  platform: linux-aarch64
+  dependencies:
+    click: ''
+    future: ''
+    jinja2: ''
+    python: '>=3.11,<3.12.0a0'
+    python_abi: 3.11.*
+    pyyaml: ''
+    six: ''
+  url: https://conda.anaconda.org/conda-forge/linux-aarch64/conda-verify-3.1.1-py311hfecb2dc_1006.tar.bz2
+  hash:
+    md5: ce113a61668d0fe7411f41caea96d0e0
+    sha256: 77cb38c64fc45565b83ef0a69a50cf5f7d487b48313f80ba4f5ec098ba5cd6cf
+  category: main
+  optional: false
+- name: conda-verify
+  version: 3.1.1
+  manager: conda
+  platform: osx-64
+  dependencies:
+    click: ''
+    future: ''
+    jinja2: ''
+    python: '>=3.11,<3.12.0a0'
+    python_abi: 3.11.*
+    pyyaml: ''
+    six: ''
+  url: https://conda.anaconda.org/conda-forge/osx-64/conda-verify-3.1.1-py311h6eed73b_1006.tar.bz2
+  hash:
+    md5: 862cc68d8218e23ee54af13d149478f8
+    sha256: 4ee82cc0cfaea652ca5cec2d75a6ed53cbbd2482f692665a68353c2aeb6393fe
+  category: main
+  optional: false
+- name: conda-verify
+  version: 3.1.1
+  manager: conda
+  platform: osx-arm64
+  dependencies:
+    click: ''
+    future: ''
+    jinja2: ''
+    python: '>=3.11,<3.12.0a0'
+    python_abi: 3.11.*
+    pyyaml: ''
+    six: ''
+  url: https://conda.anaconda.org/conda-forge/osx-arm64/conda-verify-3.1.1-py311h267d04e_1006.tar.bz2
+  hash:
+    md5: 6e6ec03943e42a8a6ac1a9181f7ade3c
+    sha256: 6e3c0d663fd8e78a138f79b65a2e01bf163263a9e55f8c9a58711d305a25b32f
+  category: main
+  optional: false
+- name: conda-verify
+  version: 3.1.1
+  manager: conda
+  platform: win-64
+  dependencies:
+    click: ''
+    future: ''
+    jinja2: ''
+    python: '>=3.11,<3.12.0a0'
+    python_abi: 3.11.*
+    pyyaml: ''
+    six: ''
+  url: https://conda.anaconda.org/conda-forge/win-64/conda-verify-3.1.1-py311h1ea47a8_1006.tar.bz2
+  hash:
+    md5: 62930f1451a75d4de38c3b6b12ef10de
+    sha256: b6851ccd7c93db65286899c3bfea63cbb4502a8f372d92d43fa7869eaace1bb7
+  category: main
+  optional: false
 - name: distro
   version: 1.9.0
   manager: conda
@@ -1807,6 +1897,66 @@ package:
   hash:
     md5: 4253b572559cc775cae49def5c97b3c0
     sha256: 4593d75b6a1e0b5b43fdcba6b968537638a6e469521fb4c3073929f973891828
+  category: main
+  optional: false
+- name: future
+  version: 1.0.0
+  manager: conda
+  platform: linux-64
+  dependencies:
+    python: '>=3.8'
+  url: https://conda.anaconda.org/conda-forge/noarch/future-1.0.0-pyhd8ed1ab_0.conda
+  hash:
+    md5: 650a7807e689642dddd3590eb817beed
+    sha256: 8c918a63595ae01575b738ddf0bff10dc23a5002d4af4c8b445d1179a76a8efd
+  category: main
+  optional: false
+- name: future
+  version: 1.0.0
+  manager: conda
+  platform: linux-aarch64
+  dependencies:
+    python: '>=3.8'
+  url: https://conda.anaconda.org/conda-forge/noarch/future-1.0.0-pyhd8ed1ab_0.conda
+  hash:
+    md5: 650a7807e689642dddd3590eb817beed
+    sha256: 8c918a63595ae01575b738ddf0bff10dc23a5002d4af4c8b445d1179a76a8efd
+  category: main
+  optional: false
+- name: future
+  version: 1.0.0
+  manager: conda
+  platform: osx-64
+  dependencies:
+    python: '>=3.8'
+  url: https://conda.anaconda.org/conda-forge/noarch/future-1.0.0-pyhd8ed1ab_0.conda
+  hash:
+    md5: 650a7807e689642dddd3590eb817beed
+    sha256: 8c918a63595ae01575b738ddf0bff10dc23a5002d4af4c8b445d1179a76a8efd
+  category: main
+  optional: false
+- name: future
+  version: 1.0.0
+  manager: conda
+  platform: osx-arm64
+  dependencies:
+    python: '>=3.8'
+  url: https://conda.anaconda.org/conda-forge/noarch/future-1.0.0-pyhd8ed1ab_0.conda
+  hash:
+    md5: 650a7807e689642dddd3590eb817beed
+    sha256: 8c918a63595ae01575b738ddf0bff10dc23a5002d4af4c8b445d1179a76a8efd
+  category: main
+  optional: false
+- name: future
+  version: 1.0.0
+  manager: conda
+  platform: win-64
+  dependencies:
+    python: '>=3.8'
+  url: https://conda.anaconda.org/conda-forge/noarch/future-1.0.0-pyhd8ed1ab_0.conda
+  hash:
+    md5: 650a7807e689642dddd3590eb817beed
+    sha256: 8c918a63595ae01575b738ddf0bff10dc23a5002d4af4c8b445d1179a76a8efd
   category: main
   optional: false
 - name: icu
@@ -6219,6 +6369,66 @@ package:
   hash:
     md5: 4a2cac04f86a4540b8c9b8d8f597848f
     sha256: 70791ae00a3756830cb50451db55f63e2a42a2fa2a8f1bab1ebd36bbb7d55bff
+  category: main
+  optional: false
+- name: six
+  version: 1.16.0
+  manager: conda
+  platform: linux-64
+  dependencies:
+    python: ''
+  url: https://conda.anaconda.org/conda-forge/noarch/six-1.16.0-pyh6c4a22f_0.tar.bz2
+  hash:
+    md5: e5f25f8dbc060e9a8d912e432202afc2
+    sha256: a85c38227b446f42c5b90d9b642f2c0567880c15d72492d8da074a59c8f91dd6
+  category: main
+  optional: false
+- name: six
+  version: 1.16.0
+  manager: conda
+  platform: linux-aarch64
+  dependencies:
+    python: ''
+  url: https://conda.anaconda.org/conda-forge/noarch/six-1.16.0-pyh6c4a22f_0.tar.bz2
+  hash:
+    md5: e5f25f8dbc060e9a8d912e432202afc2
+    sha256: a85c38227b446f42c5b90d9b642f2c0567880c15d72492d8da074a59c8f91dd6
+  category: main
+  optional: false
+- name: six
+  version: 1.16.0
+  manager: conda
+  platform: osx-64
+  dependencies:
+    python: ''
+  url: https://conda.anaconda.org/conda-forge/noarch/six-1.16.0-pyh6c4a22f_0.tar.bz2
+  hash:
+    md5: e5f25f8dbc060e9a8d912e432202afc2
+    sha256: a85c38227b446f42c5b90d9b642f2c0567880c15d72492d8da074a59c8f91dd6
+  category: main
+  optional: false
+- name: six
+  version: 1.16.0
+  manager: conda
+  platform: osx-arm64
+  dependencies:
+    python: ''
+  url: https://conda.anaconda.org/conda-forge/noarch/six-1.16.0-pyh6c4a22f_0.tar.bz2
+  hash:
+    md5: e5f25f8dbc060e9a8d912e432202afc2
+    sha256: a85c38227b446f42c5b90d9b642f2c0567880c15d72492d8da074a59c8f91dd6
+  category: main
+  optional: false
+- name: six
+  version: 1.16.0
+  manager: conda
+  platform: win-64
+  dependencies:
+    python: ''
+  url: https://conda.anaconda.org/conda-forge/noarch/six-1.16.0-pyh6c4a22f_0.tar.bz2
+  hash:
+    md5: e5f25f8dbc060e9a8d912e432202afc2
+    sha256: a85c38227b446f42c5b90d9b642f2c0567880c15d72492d8da074a59c8f91dd6
   category: main
   optional: false
 - name: soupsieve

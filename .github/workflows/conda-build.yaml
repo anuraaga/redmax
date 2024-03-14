@@ -40,5 +40,23 @@ jobs:
           cache-environment: true
 
       - name: conda-build
-        run: micromamba run -n redmax-build conda build -m conda-recipe/${{ matrix.config }} ${{ github.event_name != 'pull_request' && '-m conda-recipe/python.yaml' || '' }} conda-recipe
+        run: |
+          mkdir -p build
+          micromamba run -n redmax-build conda build -m conda-recipe/${{ matrix.config }} ${{ github.event_name != 'pull_request' && '-m conda-recipe/python.yaml' || '' }} --output-folder build conda-recipe
         shell: bash
+
+      - name: upload-packages
+        uses: actions/upload-artifact@v4
+        with:
+          name: packages-${{ matrix.os }}
+          path: build/
+
+  collect:
+    needs: [build]
+    runs-on: ubuntu-22.04
+
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          path: build
+          merge-multiple: true
