@@ -39,6 +39,8 @@ jobs:
           mkdir -p build
           micromamba run -n redmax-build conda build -m conda-recipe/${{ matrix.config }} -m conda-recipe/python.yaml --output-folder build/ conda-recipe
         shell: bash
+        env:
+          RELEASE_VERSION: ${{ github.ref_name }}
 
       - name: upload-packages
         uses: actions/upload-artifact@v4
