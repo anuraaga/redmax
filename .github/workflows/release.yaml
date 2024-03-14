@@ -6,6 +6,9 @@ on:
       - '*'
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   build:
     runs-on: ${{ matrix.os }}
@@ -81,5 +84,3 @@ jobs:
           git add .
           git commit -m "Update to latest upstream"
           git push -u origin -f gh-pages
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
