@@ -21,6 +21,10 @@ if(UNIX)
   add_definitions(${GCC_COVERAGE_COMPILE_FLAGS})
 endif()
 
+IF (WIN32)
+  add_definitions(-DNOMINMAX)
+endif()
+
 set(EXTERNAL_ROOT ${PROJECT_SOURCE_DIR}/externals)
 add_subdirectory(${EXTERNAL_ROOT})
 get_directory_property(EXTERNAL_HEADER
