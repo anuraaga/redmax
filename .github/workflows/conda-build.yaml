@@ -56,10 +56,7 @@ jobs:
     runs-on: ubuntu-22.04
 
     steps:
-      - uses: actions/download-artifact@v4
-        with:
-          path: build/
-          merge-multiple: true
+      - uses: actions/checkout@v4
 
       - uses: mamba-org/setup-micromamba@v1
         with:
@@ -67,6 +64,11 @@ jobs:
           environment-file: conda-recipe/conda-lock.yml
           environment-name: redmax-build
           cache-environment: true
+
+      - uses: actions/download-artifact@v4
+        with:
+          path: build/
+          merge-multiple: true
 
       - name: prepare package
         run: micromamba run conda index build/
