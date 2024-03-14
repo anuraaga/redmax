@@ -36,5 +36,5 @@ jobs:
           cache-environment: true
 
       - name: conda-build
-        run: conda build -m conda-recipe/${{ matrix.config }} conda-recipe
-        shell: micromamba-shell {0}
+        run: micromamba run -n redmax-build conda build -m conda-recipe/${{ matrix.config }} conda-recipe
+        shell: bash
