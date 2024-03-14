@@ -7,6 +7,10 @@ on:
   pull_request:
   workflow_dispatch:
 
+concurrency:
+  group: redmax-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
 jobs:
   build:
     runs-on: ${{ matrix.os }}
@@ -36,5 +40,5 @@ jobs:
           cache-environment: true
 
       - name: conda-build
-        run: micromamba run -n redmax-build conda build -m conda-recipe/${{ matrix.config }} conda-recipe
+        run: micromamba run -n redmax-build conda build -m conda-recipe/${{ matrix.config }} ${{ github.event_name != 'pull_request' && '-m conda-recipe/python.yaml' || '' }} conda-recipe
         shell: bash
