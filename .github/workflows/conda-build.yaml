@@ -18,14 +18,14 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - os: macos-13
-            config: osx_64_.yaml
+          #- os: macos-13
+          #  config: osx_64_.yaml
           - os: macos-14
             config: osx_arm64_.yaml
           - os: ubuntu-22.04
             config: linux_64_.yaml
-          - os: windows-2022
-            config: win_64_.yaml
+          #- os: windows-2022
+          #  config: win_64_.yaml
 
     steps:
       - uses: actions/checkout@v4
@@ -65,13 +65,17 @@ jobs:
           environment-name: redmax-build
           cache-environment: true
 
+      - uses: actions/checkout@v4
+        with:
+            ref: gh-pages
+
       - uses: actions/download-artifact@v4
         with:
           path: conda/
           merge-multiple: true
 
       - name: prepare package
-        run: micromamba run conda index conda/
+        run: micromamba run -n redmax-build conda index conda/
 
       - uses: actions/upload-pages-artifact@v3
         with:
