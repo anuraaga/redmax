@@ -4,6 +4,8 @@ file(GLOB_RECURSE HEADER ${SOURCE_DIR}/*.h)
 file(GLOB_RECURSE SOURCE ${SOURCE_DIR}/*.cpp)
 list(REMOVE_ITEM SOURCE ${SOURCE_DIR}/python_interface.cpp)
 
+find_package(pybind11 REQUIRED)
+
 # CMAKE_INSTALL_PREFIX=$(python3 -c “import sys; print(sys.prefix)”)
 pybind11_add_module(redmax python_interface.cpp ${HEADER} ${SOURCE})
 

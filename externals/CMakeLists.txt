@@ -31,7 +31,7 @@ add_subdirectory(libigl)
 # add_subdirectory(pugixml)
 
 # pybind11
-add_subdirectory(pybind11)
+# add_subdirectory(pybind11)
 
 # sdfgen
 add_subdirectory(sdfgen)

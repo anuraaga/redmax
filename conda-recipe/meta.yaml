@@ -1,0 +1,41 @@
+package:
+  name: redmax
+  version: "0.2.0"
+
+source:
+  path: ../
+
+build:
+  number: 0
+  script: {{ PYTHON }} -m pip install --no-deps . -vv
+
+requirements:
+  host:
+  - python
+  build:
+  - {{ compiler('cxx') }}
+  - cmake
+  - eigen
+  - pybind11
+  run:
+  - python
+  - eigen
+
+outputs:
+  - name: redmax
+    type: conda_v2
+
+test:
+  imports:
+    - redmax
+
+about:
+  home: https://github.com/foundationllm/redmax
+  summary: Redmax simulation library.
+  dev_url: https://github.com/foundationllm/redmax
+  license: MIT
+  license_file: LICENSE
+
+extra:
+  recipe-maintainers:
+  - anuraaga
