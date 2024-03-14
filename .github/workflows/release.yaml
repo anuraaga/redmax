@@ -46,7 +46,7 @@ jobs:
           name: packages-${{ matrix.os }}
           path: build/
 
-  create-pages:
+  pages:
     needs: [build]
     runs-on: ubuntu-22.04
 
