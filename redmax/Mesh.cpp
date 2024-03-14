@@ -1,3 +1,6 @@
+
+#include <limits>
+
 #include "Mesh.h"
 
 namespace redmax {
