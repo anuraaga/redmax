@@ -51,7 +51,7 @@ jobs:
           name: packages-${{ matrix.os }}
           path: build/
 
-  collect:
+  create-pages:
     needs: [build]
     runs-on: ubuntu-22.04
 
@@ -61,4 +61,17 @@ jobs:
           path: build/
           merge-multiple: true
 
-      - run: ls -l build/
+      - uses: mamba-org/setup-micromamba@v1
+        with:
+          generate-run-shell: true
+          environment-file: conda-recipe/conda-lock.yml
+          environment-name: redmax-build
+          cache-environment: true
+
+      - name: prepare package
+        run: micromamba run conda index build/
+
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+            path: build/
