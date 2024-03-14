@@ -60,3 +60,5 @@ jobs:
         with:
           path: build/
           merge-multiple: true
+
+      - run: ls -l build/
